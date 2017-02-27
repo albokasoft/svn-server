@@ -18,14 +18,13 @@ RUN /usr/sbin/a2enmod ssl
 RUN /usr/sbin/a2enmod dav_svn
 RUN /usr/sbin/a2enmod auth_digest
 
-RUN dpkg --add-architecture i386 && apt-get update && apt-get install -y --force-yes libstdc++5:i386 libpam0g:i386 sudo && apt-get clean
-
 RUN mkdir /etc/apache2/dav_svn
 RUN mkdir /var/local/svn
 
 ADD ./svn.sudoers /etc/sudoers.d/svn
 ADD files/dav_svn.conf /etc/apache2/mods-available/dav_svn.conf
 ADD files/svn-entrypoint.sh /usr/local/bin/
+ADD files/iF.SVNAdmin-stable-1.6.2 /var/www/svnadmin
 
 RUN chmod a+x /usr/local/bin/svn*
 
