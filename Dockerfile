@@ -21,7 +21,7 @@ RUN /usr/sbin/a2enmod auth_digest
 RUN mkdir /etc/apache2/dav_svn
 RUN mkdir /var/local/svn
 
-ADD ./svn.sudoers /etc/sudoers.d/svn
+ADD files/svn.sudoers /etc/sudoers.d/svn
 ADD files/dav_svn.conf /etc/apache2/mods-available/dav_svn.conf
 ADD files/svn-entrypoint.sh /usr/local/bin/
 ADD files/iF.SVNAdmin-stable-1.6.2 /var/www/svnadmin
