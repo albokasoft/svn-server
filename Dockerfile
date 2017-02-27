@@ -33,6 +33,6 @@ VOLUME [ "/var/local/svn" ]
 EXPOSE 80
 EXPOSE 443
 
-RUN sed -i 's/# exec CMD/&\nsvn-entrypoint.sh/g' /opt/entrypoint.sh
+RUN exec CMD svn-entrypoint.sh
 
-#CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
