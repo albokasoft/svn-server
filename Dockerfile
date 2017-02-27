@@ -24,6 +24,7 @@ RUN mkdir /var/local/svn
 ADD files/svn.sudoers /etc/sudoers.d/svn
 ADD files/dav_svn.conf /etc/apache2/mods-available/dav_svn.conf
 ADD files/svn-entrypoint.sh /usr/local/bin/
+ADD files/svn-entrypoint.sh /opt/entrypoint.sh
 ADD files/iF.SVNAdmin-stable-1.6.2 /var/www/svnadmin
 
 RUN chmod a+x /usr/local/bin/svn*
@@ -33,6 +34,7 @@ VOLUME [ "/var/local/svn" ]
 EXPOSE 80
 EXPOSE 443
 
-RUN exec CMD svn-entrypoint.sh
+RUN chmod a+x /opt/entrypoint.sh
 
+ENTRYPOINT ["/opt/entrypoint.sh"]
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
