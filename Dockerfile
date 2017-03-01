@@ -16,13 +16,14 @@ RUN mkdir /etc/apache2/dav_svn
 RUN mkdir /var/local/svn
 
 ADD files/svn.sudoers /etc/sudoers.d/svn
-ADD files/dav_svn.conf /etc/apache2/mods-available/dav_svn.conf
+ADD files/dav_svn.conf /etc/apache2/sites-available/dav_svn.conf
 ADD files/svn-entrypoint.sh /usr/local/bin/
 ADD files/svn-entrypoint.sh /opt/entrypoint.sh
-ADD files/iF.SVNAdmin-stable-1.6.2 /var/www/svnadmin
-RUN chown www-data:www-data -R /var/www/svnadmin
+ADD files/iF.SVNAdmin-stable-1.6.2 /var/www/html/svnadmin
+RUN chown www-data:www-data -R /var/www/html/svnadmin
 
 RUN chmod a+x /usr/local/bin/svn*
+a2ensite dav_svn.conf
 
 VOLUME [ "/var/local/svn" ]
 
