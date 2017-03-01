@@ -1,10 +1,10 @@
-FROM httpd:2.4
+FROM php:7-apache
 MAINTAINER Albokasoft
 
 ENV LANG C.UTF-8
 
 RUN apt-get update
-RUN apt-get install -y nano sudo git subversion php5 libapache2-svn apache2-mpm-prefork
+RUN apt-get install -y nano sudo git subversion libapache2-svn apache2-mpm-prefork
 RUN apt-get clean
 
 RUN /usr/sbin/a2ensite default-ssl
