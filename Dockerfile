@@ -7,8 +7,8 @@ RUN apt-get update
 RUN apt-get install -y nano sudo git subversion libapache2-svn apache2-mpm-prefork
 RUN apt-get clean
 
-RUN /usr/sbin/a2ensite default-ssl
-RUN /usr/sbin/a2enmod ssl
+#RUN /usr/sbin/a2ensite default-ssl
+#RUN /usr/sbin/a2enmod ssl
 RUN /usr/sbin/a2enmod dav_svn
 RUN /usr/sbin/a2enmod auth_digest
 
@@ -26,6 +26,7 @@ RUN chmod a+x /usr/local/bin/svn*
 RUN /usr/sbin/a2ensite dav_svn.conf
 
 VOLUME [ "/var/local/svn" ]
+VOLUME [ "/etc/ssl/certs/" ]
 
 #EXPOSE 80 exposed in httpd
 EXPOSE 443
