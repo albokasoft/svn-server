@@ -37,4 +37,4 @@ fi
 
 chown -R www-data:www-data "/var/local/svn/"
 #cron -f &
-httpd-foreground 
+apache2-foreground
