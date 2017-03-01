@@ -23,7 +23,7 @@ ADD files/iF.SVNAdmin-stable-1.6.2 /var/www/html/svnadmin
 RUN chown www-data:www-data -R /var/www/html/svnadmin
 
 RUN chmod a+x /usr/local/bin/svn*
-a2ensite dav_svn.conf
+RUN /usr/sbin/a2ensite dav_svn.conf
 
 VOLUME [ "/var/local/svn" ]
 
