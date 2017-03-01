@@ -1,4 +1,4 @@
-FROM php:7-apache
+FROM php:5-apache
 MAINTAINER Albokasoft
 
 ENV LANG C.UTF-8
