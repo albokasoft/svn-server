@@ -22,6 +22,12 @@ ADD files/svn-entrypoint.sh /opt/entrypoint.sh
 ADD files/iF.SVNAdmin-stable-1.6.2 /var/www/html/svnadmin
 RUN chown www-data:www-data -R /var/www/html/svnadmin
 
+RUN mkdir /opt/backup
+ADD files/backup.sh /usr/bin/backup.sh
+ADD files/deletebackup.sh /usr/bin/deletebackup.sh
+RUN chmod +x /usr/bin/backup.sh
+RUN chmod +x /usr/bin/deletebackup.sh
+
 RUN chmod a+x /usr/local/bin/svn*
 RUN /usr/sbin/a2ensite dav_svn.conf
 
